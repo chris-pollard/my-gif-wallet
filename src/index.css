@@ -83,13 +83,13 @@ body::-webkit-scrollbar-thumb {
   text-align: center;
   margin: 0 0 0.5em 0;
   color:rgba(38, 70, 83, 1);
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .wallet-button {
   background-color: green;
   text-align: center;
-  font-size: 2em;
+  font-size: 1em;
   width: 50%;
   margin: 0 0 0.5em 0;
 }
@@ -117,10 +117,10 @@ body::-webkit-scrollbar-thumb {
 
 .search-input {
   width: 80%;
-  height: 10vh;
+  height: 2em;
   border-radius: 0.5em;
-  padding: 1em;
-  font-size: 3em;
+  padding: 0.5em;
+  font-size: 2em;
   background-color: rgba(38, 70, 83, 0.6);
   margin-bottom: 1.5em;
   color: grey;
@@ -134,7 +134,7 @@ body::-webkit-scrollbar-thumb {
   box-shadow: 0 0 20px 0 black;
 }
 
-.search-pane, .wallet-pane {
+.search-pane, .wallet-pane, .sign-in {
   padding: 1em 2em;
   text-align: center;
 }
@@ -147,15 +147,15 @@ body::-webkit-scrollbar-thumb {
 
 .wallet-link, .search-link {
   color:white;
-  padding: 1em 0;
+  padding: 0.5em 0;
   text-decoration: none;
-  background-color:deeppink;
+  background-color:pink;
   font-size: 2em;
   margin: 5px;
 }
 
 .selected {
-  background-color: pink;
+  background-color: deeppink;
   color:white;
 }
 
