@@ -7,7 +7,6 @@ const Search = ({
                     handleChange, 
                     results, 
                     getMoreGifs, 
-                    query, 
                     addGif
                 }) => {
 
@@ -22,7 +21,7 @@ const Search = ({
     return ( 
         <div className="search-pane">
 
-        <h1 className="page-title">Search {user ? `user Id is ${user.uid}` : "no user auth"}</h1>
+        <h1 className="page-title">Search</h1>
 
         <input 
             className="search-input"
@@ -38,7 +37,7 @@ const Search = ({
           dataLength={results.length}
           next={getMoreGifs}
           hasMore={true}
-          loader={query ? <h4 className="loading">Loading...</h4> : ''}
+        //   loader={<h4 className="loading">Loading...</h4>}
         >
             <Masonry
                 breakpointCols={breakpointColumnsObj}

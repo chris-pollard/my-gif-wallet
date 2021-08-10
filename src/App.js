@@ -19,7 +19,6 @@ function App() {
   const limit = 10;
 
   const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('');
   const [page, setPage] = useState(0);
   const [results, setResults] = useState([]);
   const [myGifs, setMyGifs] = useState([]);
@@ -62,35 +61,26 @@ function App() {
 
   useEffect(() => {
     if (user !== null) {
-      fetchGifs(user.uid);
+      firebase
+      .firestore()
+      .collection('gifs')
+      .where('userId','==',user.uid)
+      .get()
+      .then(snapshot => {
+        const data = snapshot.docs.map(doc => {
+          return [doc.id, doc.data()]
+        });
+        setMyGifs(data);
+      });
     }
     
-  },[isSignedIn]);
+  },[isSignedIn, user]);
 
 
   const handleChange = (e) => {
     setSearch(e.target.value);
     if (search.length > 4) {
-      setQuery(search);
-    }
-  };
-
-  const getMoreGifs = () => {
-    setPage(page + 1);
-    
-    fetch(`https://api.giphy.com/v1/gifs/search?api_key=faB9WSBNS7W0vQCqGRN1XMFcBWAB9nUo&q=${query}&limit=${limit}&offset=${page*limit}&rating=pg&lang=en`)
-    .then(response => response.json())
-    .then(json => setResults(results.concat(
-      json.data.map(item => {
-        return [item.images.preview.mp4, item.bitly_url];
-      })
-    )
-    ));
-  }
-
-  useEffect(() => {
-    if (query !== '') {
-      fetch(`https://api.giphy.com/v1/gifs/search?api_key=faB9WSBNS7W0vQCqGRN1XMFcBWAB9nUo&q=${query}&limit=${limit}&offset=${page*limit}&rating=pg&lang=en`)
+      fetch(`https://api.giphy.com/v1/gifs/search?api_key=faB9WSBNS7W0vQCqGRN1XMFcBWAB9nUo&q=${search}&limit=${limit}&offset=${page*limit}&rating=pg&lang=en`)
       .then(response => response.json())
       .then(json => {
         setResults(
@@ -100,8 +90,20 @@ function App() {
       )
       )});
     }
+  };
 
-  }, [query]);
+  const getMoreGifs = () => {
+    setPage(page + 1);
+    
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=faB9WSBNS7W0vQCqGRN1XMFcBWAB9nUo&q=${search}&limit=${limit}&offset=${page*limit}&rating=pg&lang=en`)
+    .then(response => response.json())
+    .then(json => setResults(results.concat(
+      json.data.map(item => {
+        return [item.images.preview.mp4, item.bitly_url];
+      })
+    )
+    ));
+  }
 
   const handleRemove = (id) => {
     firebase
@@ -133,7 +135,6 @@ function App() {
             handleChange={handleChange}
             results={results}
             getMoreGifs={getMoreGifs}
-            query={query}
             addGif={addGif}
           />
         </Route>
