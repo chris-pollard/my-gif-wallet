@@ -1,3 +1,18 @@
+/* SCSS RGB */
+/* $charcoal: rgba(38, 70, 83, 1);
+$persian-green: rgba(42, 157, 143, 1);
+$orange-yellow-crayola: rgba(233, 196, 106, 1);
+$sandy-brown: rgba(244, 162, 97, 1);
+$burnt-sienna: rgba(231, 111, 81, 1); */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +20,145 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(38, 70, 83, 1);
+  color: rgba(255, 255, 252, 1);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body::-webkit-scrollbar {
+  width: 20px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: pink;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(42, 157, 143, 1);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid pink;  /* creates padding around scroll thumb */
+}
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 10px; /* gutter size */
+  background-clip: padding-box;
+}
+
+.result-video, .wallet-video {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.pink {
+  background-color: pink;
+}
+
+.loading {
+  color: deeppink;
+  text-align: center;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.add-gif-btn:hover {
+  cursor: pointer;
+}
+
+.add-gif-btn {
+  border-radius: 0px 0px 10px 10px;
+  background-color: green;
+  text-align: center;
+  margin: 0 0 0.5em 0;
+  color:rgba(38, 70, 83, 1);
+  font-size: 2em;
+}
+
+.wallet-button {
+  background-color: green;
+  text-align: center;
+  font-size: 2em;
+  width: 50%;
+  margin: 0 0 0.5em 0;
+}
+
+.copy {
+  border-radius: 0 0 0 10px;
+}
+
+.remove {
+  border-radius: 0 0 10px 0;
+}
+
+.wallet-button:hover {
+  background-color: greenyellow;
+}
+
+.add-gif-btn:hover {
+  background-color: greenyellow;
+}
+
+.gif-container {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.search-input {
+  width: 80%;
+  height: 10vh;
+  border-radius: 0.5em;
+  padding: 1em;
+  font-size: 3em;
+  background-color: rgba(38, 70, 83, 0.6);
+  margin-bottom: 1.5em;
+  color: grey;
+  box-shadow: 0 0 5px 0 black;
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: rgba(244, 162, 97, 1);
+  color: rgba(38, 70, 83, 1);
+  box-shadow: 0 0 20px 0 black;
+}
+
+.search-pane, .wallet-pane {
+  padding: 1em 2em;
+  text-align: center;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+.wallet-link, .search-link {
+  color:white;
+  padding: 1em 0;
+  text-decoration: none;
+  background-color:deeppink;
+  font-size: 2em;
+  margin: 5px;
+}
+
+.selected {
+  background-color: pink;
+  color:white;
+}
+
+.page-title {
+  text-align: center;
 }
