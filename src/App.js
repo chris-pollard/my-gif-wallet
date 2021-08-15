@@ -16,13 +16,14 @@ import {
 function App() {
 
 
-  const limit = 10;
+  const limit = 13;
 
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(0);
   const [results, setResults] = useState([]);
   const [myGifs, setMyGifs] = useState([]);
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [addedList, setAddedList] = useState([]);
 
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
@@ -33,7 +34,7 @@ function App() {
 
   const user = firebase.auth().currentUser
 
-  const addGif = (mp4, bitly, userId) => {
+  const addGif = (mp4, bitly, userId, resultsIndex) => {
       firebase
         .firestore()
         .collection('gifs')
@@ -42,7 +43,11 @@ function App() {
             bitly: bitly,
             userId: userId
         })
-        .then(() => fetchGifs());
+        .then(() => {
+          setAddedList([...addedList, resultsIndex])
+          fetchGifs()
+        }
+        );
   };
 
   const fetchGifs = (userId) => {
@@ -79,16 +84,17 @@ function App() {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    if (search.length > 4) {
+    if (search.length > 2) {
       fetch(`https://api.giphy.com/v1/gifs/search?api_key=faB9WSBNS7W0vQCqGRN1XMFcBWAB9nUo&q=${search}&limit=${limit}&offset=${page*limit}&rating=pg&lang=en`)
       .then(response => response.json())
       .then(json => {
         setResults(
         json.data.map(item => {
           return [item.images.preview.mp4, item.bitly_url];
-        } 
-      )
-      )});
+        })
+        );
+        setAddedList([]);
+      });
     }
   };
 
@@ -136,6 +142,7 @@ function App() {
             results={results}
             getMoreGifs={getMoreGifs}
             addGif={addGif}
+            addedList={addedList}
           />
         </Route>
         <Route path="/">

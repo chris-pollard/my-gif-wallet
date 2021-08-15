@@ -1,5 +1,6 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry from 'react-masonry-css';
+import BreakPoints from './BreakPoints'
 
 const Search = ({
                     user, 
@@ -7,16 +8,9 @@ const Search = ({
                     handleChange, 
                     results, 
                     getMoreGifs, 
-                    addGif
+                    addGif,
+                    addedList
                 }) => {
-
-
-    const breakpointColumnsObj = {
-        default: 4,
-        1100: 3,
-        700: 2,
-        500: 1
-        };
 
     return ( 
         <div className="search-pane">
@@ -40,7 +34,7 @@ const Search = ({
         //   loader={<h4 className="loading">Loading...</h4>}
         >
             <Masonry
-                breakpointCols={breakpointColumnsObj}
+                breakpointCols={BreakPoints}
                 className="my-masonry-grid"
                 columnClassName="my-masonry-grid_column">
                 {results.map(([mp4, bitly],index) => (
@@ -55,9 +49,9 @@ const Search = ({
                     />
                     <p 
                         className="add-gif-btn"
-                        onClick={() => addGif(mp4, bitly, user.uid)}
+                        onClick={() => addGif(mp4, bitly, user.uid, index)}
                     >
-                        Add
+                        {addedList.includes(index) ? 'Added' : '+ Add to wallet'}
                     </p>
 
                     </div>

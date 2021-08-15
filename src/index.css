@@ -20,7 +20,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(38, 70, 83, 1);
+  background-color: midnightblue;
   color: rgba(255, 255, 252, 1);
 }
 
@@ -42,7 +42,8 @@ body::-webkit-scrollbar-thumb {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  width: auto;
+  max-width: 900px;
+  margin: 0 auto;
 }
 .my-masonry-grid_column {
   padding-left: 10px; /* gutter size */
@@ -79,17 +80,19 @@ body::-webkit-scrollbar-thumb {
 
 .add-gif-btn {
   border-radius: 0px 0px 10px 10px;
-  background-color: green;
+  background-color: pink;
   text-align: center;
   margin: 0 0 0.5em 0;
   color:rgba(38, 70, 83, 1);
-  font-size: 1.5em;
+  font-size: 1.1em;
+  padding: 0.5em;
 }
 
 .wallet-button {
-  background-color: green;
+  background-color: pink;
   text-align: center;
   font-size: 1em;
+  padding: 0.5em;
   width: 50%;
   margin: 0 0 0.5em 0;
 }
@@ -103,11 +106,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .wallet-button:hover {
-  background-color: greenyellow;
+  background-color: deeppink;
 }
 
 .add-gif-btn:hover {
-  background-color: greenyellow;
+  background-color: deeppink;
 }
 
 .gif-container {
@@ -117,20 +120,20 @@ body::-webkit-scrollbar-thumb {
 
 .search-input {
   width: 80%;
-  height: 2em;
   border-radius: 0.5em;
+  border: 2px solid white;
   padding: 0.5em;
-  font-size: 2em;
+  font-size: 1.25em;
   background-color: rgba(38, 70, 83, 0.6);
   margin-bottom: 1.5em;
   color: grey;
-  box-shadow: 0 0 5px 0 black;
+
 }
 
 .search-input:focus {
   outline: none;
-  background-color: rgba(244, 162, 97, 1);
-  color: rgba(38, 70, 83, 1);
+  background-color: pink;
+  color: midnightblue;
   box-shadow: 0 0 20px 0 black;
 }
 
@@ -143,13 +146,16 @@ body::-webkit-scrollbar-thumb {
   display: grid;
   grid-template-columns: 1fr 1fr;
   text-align: center;
+  margin: 0 auto;
 }
 
 .wallet-link, .search-link {
   color:white;
-  padding: 0.5em 0;
+  border:2px solid white;
+  border-radius: 10px;
+  padding: 0.25em 0;
   text-decoration: none;
-  background-color:pink;
+
   font-size: 2em;
   margin: 5px;
 }

@@ -2,6 +2,7 @@ import { firebase, uiConfig } from './firebase.js';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import 'firebaseui/dist/firebaseui.css'
 import Masonry from 'react-masonry-css';
+import BreakPoints from './BreakPoints'
 
 const Wallet = (
     {
@@ -12,20 +13,13 @@ const Wallet = (
     }
 ) => {
 
-    const breakpointColumnsObj = {
-      default: 4,
-      1100: 3,
-      700: 2,
-      500: 1
-    };
-
     if (user) {
         return (
         <div className="wallet-pane">
             <h1 className="page-title">Wallet</h1>
             
             <Masonry
-                breakpointCols={breakpointColumnsObj}
+                breakpointCols={BreakPoints}
                 className="my-masonry-grid"
                 columnClassName="my-masonry-grid_column">
                 {myGifs.map(([id,gif]) => (
