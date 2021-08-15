@@ -119,7 +119,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .search-input {
-  width: 80%;
+  width: 50%;
   border-radius: 0.5em;
   border: 2px solid white;
   padding: 0.5em;
@@ -127,7 +127,12 @@ body::-webkit-scrollbar-thumb {
   background-color: rgba(38, 70, 83, 0.6);
   margin-bottom: 1.5em;
   color: grey;
+}
 
+@media (max-width: 600px) {
+  .search-input {
+    width: 80%;
+  }
 }
 
 .search-input:focus {
@@ -167,4 +172,14 @@ body::-webkit-scrollbar-thumb {
 
 .page-title {
   text-align: center;
+}
+
+.gify-attr {
+  width: 100px;
+  display: block;
+  margin: 0 auto 1.5em auto;
+}
+
+.search-title {
+  margin-bottom: 0;
 }

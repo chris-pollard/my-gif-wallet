@@ -15,7 +15,8 @@ const Search = ({
     return ( 
         <div className="search-pane">
 
-        <h1 className="page-title">Search</h1>
+        <h1 className="page-title search-title">Search</h1>
+        <img className="gify-attr" src="/powered_gify.png" alt="Powered by GIFY" />
 
         <input 
             className="search-input"
